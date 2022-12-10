@@ -6,11 +6,14 @@ const isManager = (id) => {
   // caminho employees.menagers
   // verifica se é gerente usar some.
   // console.log(id)
-   const verificaGerente = employees
+   return employees
    .map((employee) => employee.managers )
    .some((element) => element[0] === id || element[1] === id )
     console.log(verificaGerente);
 
+    // const verificaGerente2 = employees
+    // .filter((employee) => employee.managers )
+    // console.log(verificaGerente2);
 };
 
 const getRelatedEmployees = (managerId) => {
