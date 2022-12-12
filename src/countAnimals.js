@@ -9,17 +9,24 @@ const countAnimals = (animal) => {
   // { 
   //   lions: 4,
   // }
-  let result = {} 
+  let result = {}
   const paramRecebido = animal
+  // console.log(paramRecebido);
+  const key = paramRecebido.species
+  // console.log(key)
+  let count = 0
   const procuraAni = species.find((specie) => specie.name === paramRecebido.species)
   if (paramRecebido.sex === 'male' || paramRecebido.sex === 'female') {
-    return procuraAni.residents.filter((resident) => resident.sex === paramRecebido.sex).length
+    count = procuraAni.residents.filter((resident) => resident.sex === paramRecebido.sex).length
   } else {
-    return procuraAni.residents.length
+    count = procuraAni.residents.length
   }
- 
-}
+  // result[paramRecebido.species] = count
+  // return result 
+  return count
+  // console.log(result)
 
+}
 console.log(countAnimals({ species: 'giraffes' }))
 console.log(countAnimals({ species: 'giraffes', sex: 'female' }))
 console.log(countAnimals({ species: 'giraffes', sex: 'male' }))
