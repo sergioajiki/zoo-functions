@@ -6,21 +6,20 @@ const countAnimals = (animal) => {
   const result = {};
   let count = 0;
   if (paramRecebido === undefined) {
-    species.map((nome) => {
-      result[nome.name] = nome.residents.length;
-    })
+    species.map((tipoAnimal) => {
+      result[tipoAnimal.name] = tipoAnimal.residents.length;
+      return result;
+    });
     return result;
   }
-  const procuraAni = species.find((specie) => specie.name === paramRecebido.species)
+  const procuraAni = species.find((specie) => specie.name === paramRecebido.species);
   if (paramRecebido.sex === 'male' || paramRecebido.sex === 'female') {
     count = procuraAni.residents.filter((resident) => resident.sex === paramRecebido.sex).length;
   } else {
     count = procuraAni.residents.length;
-  };
-  // result[paramRecebido.species] = count
-  // return result 
+  }
   return count;
-}
+};
 
 console.log(countAnimals());
 console.log(countAnimals({ species: 'giraffes' }));
