@@ -1,17 +1,21 @@
-// const { employees } = require('../data/zoo_data');
+const { employees } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
 // // console.log(employees)
+
 const isManager = (id) => {
-//   // retorna booleano
-//   // caminho employees.menagers
-//   // verifica se é gerente usar some.
-//   // console.log(id)
-//   return employees
-//     .map((employee) => employee.managers)
-//     //  .some((element) => element == id)
-//     .some((element) => element[0] === id || element[1] === id)
-//   // .some((element, index) => element[index] === id)
+  console.log(id)
+  //   // retorna booleano
+  //   // caminho employees.menagers
+  //   // verifica se é gerente usar some.
+  return employees
+    .some((gerente) =>
+      console.log(gerente,'separa',gerente.managers)
+  )
+  // .filter((gerente) => 
+  // console.log(gerente))
+  //     .some((element) => element[0] === id || element[1] === id)
+  //   // .some((element, index) => element[index] === id)
 
 };
 
@@ -19,7 +23,7 @@ const getRelatedEmployees = (managerId) => {
 
 };
 // // isManager(olaId)
-// console.log(isManager('fdb2543b-5662-46a7-badc-93d960fdc0a8'))
+console.log(isManager('fdb2543b-5662-46a7-badc-93d960fdc0a8'))
 // console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'))
 // console.log(isManager('9e7d4524-363c-416a-8759-8aa7e50c0992'))
 // console.log(isManager('4b40a139-d4dc-4f09-822d-ec25e819a5ad'))
