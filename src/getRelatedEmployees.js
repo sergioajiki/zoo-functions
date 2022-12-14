@@ -27,6 +27,7 @@ const getRelatedEmployees = (managerId) => {
   }
   let firstName = [];
   let lastName = [];
+  let nomeCompleto = []
   // console.log(employees)
   employees.forEach((gerente) => {
     // console.log(gerente.managers)
@@ -38,11 +39,14 @@ const getRelatedEmployees = (managerId) => {
       //pegar firstname e lastname
       firstName.push(gerente.firstName)
       lastName.push(gerente.lastName)
+      nomeCompleto.push(gerente.firstName + ' ' + gerente.lastName)
     }
   }
   )
-console.log(firstName)
-console.log(lastName)
+  return nomeCompleto
+  // console.log(firstName)
+  // console.log(lastName)
+  // console.log(nomeCompleto)
 };
 // // isManager(olaId)
 // console.log(isManager('fdb2543b-5662-46a7-badc-93d960fdc0a8'))
