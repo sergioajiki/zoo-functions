@@ -10,42 +10,24 @@ const isManager = (id) => {
   //   // verifica se é gerente true or false usar some.
   return employees
     .some((gerente) =>
-      // console.log(gerente,gerente.managers)  
-      gerente.managers.includes(id)
-    )
-  // .filter((gerente) => 
+    // console.log(gerente,gerente.managers)
+      gerente.managers.includes(id));
+  // .filter((gerente) =>
   // console.log(gerente))
   //     .some((element) => element[0] === id || element[1] === id)
   //   // .some((element, index) => element[index] === id)
-
 };
-
 const getRelatedEmployees = (managerId) => {
-
   if (isManager(managerId) === false) {
-    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!')
+    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
-  let firstName = [];
-  let lastName = [];
-  let nomeCompleto = []
-  // console.log(employees)
+  const nomeCompleto = [];
   employees.forEach((gerente) => {
-    // console.log(gerente.managers)
-    // console.log(managerId)
     if (gerente.managers.includes(managerId)) {
-      console.log('encontrou gerente')
-      console.log(gerente.firstName)
-      console.log(gerente.lastName)
-      //pegar firstname e lastname
-      firstName.push(gerente.firstName)
-      lastName.push(gerente.lastName)
-      nomeCompleto.push(gerente.firstName + ' ' + gerente.lastName)
+      nomeCompleto.push(gerente.firstName + ' ' + gerente.lastName);
     }
-  }
-  )
-  return nomeCompleto
-  // console.log(firstName)
-  // console.log(lastName)
+  });
+  return nomeCompleto;
   // console.log(nomeCompleto)
 };
 // // isManager(olaId)
