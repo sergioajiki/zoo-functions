@@ -8,7 +8,7 @@ const countEntrants = (entrants) => {
     senior: 0,
   };
   const verParametro = entrants;
-  const idadeVisitantes = verParametro
+  verParametro
     .map((visitante) => visitante.age)
     .forEach((idade) => {
       if (idade < 18) {
@@ -28,18 +28,44 @@ const calculateEntry = (entrants) => {
     return 0;
   }
   const pagantes = countEntrants(entrants);
-  console.log(pagantes);
-  console.log(prices);
+  // console.log(pagantes);
+  // console.log(prices);
   let total = 0;
-  for (let index = 0; index < Object.entries(pagantes).length; index += 1) {
-    for (let i = 0; i < Object.keys(prices).length; i += 1) {
-      if (Object.keys(pagantes)[index] === Object.keys(prices)[i]) {
-        total += (Object.values(pagantes)[index] * Object.values(prices)[i]);
-      }
-    }
-  } return total;
+  Object.keys(pagantes)
+    .forEach((chave) => {
+      console.log(pagantes[chave]);
+      console.log(prices[chave]);
+      total += pagantes[chave] * prices[chave];
+    });
+  return total;
 };
+// for (let price in Object.keys(prices)) {
+//   if (chave === price) {
+//     total += pagantes[chave * Object.values(prices)[price]]
+//   } console.log(chave, price)
+// }
 
+// if(pagante === Object.keys(prices)) {
+// // console.log(pagante, pagantes[pagante], Object.keys(prices)[index],Object.values(prices)[index])
+// total += pagantes[pagante] * Object.values(prices)[index]
+// console.log(total)
+// }
+
+// console.log(pagante, pagantes[pagante])
+// console.log(Object.keys(prices)[index])
+// console.log(Object.values(prices)[index])
+// console.log(Object.values(prices)[index])
+// console.log(pagantes[pagante])
+// console.log(Object.values(pagantes), Object.values(prices)[index])
+// })
+// for (let index = 0; index < Object.entries(pagantes).length; index += 1) {
+//   // console.log(Object.keys(pagantes)[index])
+//   for (let i = 0; i < Object.keys(prices).length; i += 1) {
+//     if (Object.keys(pagantes)[index] === Object.keys(prices)[i]) {
+//       total += (Object.values(pagantes)[index] * Object.values(prices)[i]);
+//     }
+//   }
+// } return total;
 // const entrants = [
 //   { name: 'Lara Carvalho', age: 5 },
 //   { name: 'Frederico Moreira', age: 5 },
