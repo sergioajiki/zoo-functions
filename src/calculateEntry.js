@@ -39,33 +39,7 @@ const calculateEntry = (entrants) => {
     });
   return total;
 };
-// for (let price in Object.keys(prices)) {
-//   if (chave === price) {
-//     total += pagantes[chave * Object.values(prices)[price]]
-//   } console.log(chave, price)
-// }
 
-// if(pagante === Object.keys(prices)) {
-// // console.log(pagante, pagantes[pagante], Object.keys(prices)[index],Object.values(prices)[index])
-// total += pagantes[pagante] * Object.values(prices)[index]
-// console.log(total)
-// }
-
-// console.log(pagante, pagantes[pagante])
-// console.log(Object.keys(prices)[index])
-// console.log(Object.values(prices)[index])
-// console.log(Object.values(prices)[index])
-// console.log(pagantes[pagante])
-// console.log(Object.values(pagantes), Object.values(prices)[index])
-// })
-// for (let index = 0; index < Object.entries(pagantes).length; index += 1) {
-//   // console.log(Object.keys(pagantes)[index])
-//   for (let i = 0; i < Object.keys(prices).length; i += 1) {
-//     if (Object.keys(pagantes)[index] === Object.keys(prices)[i]) {
-//       total += (Object.values(pagantes)[index] * Object.values(prices)[i]);
-//     }
-//   }
-// } return total;
 // const entrants = [
 //   { name: 'Lara Carvalho', age: 5 },
 //   { name: 'Frederico Moreira', age: 5 },
