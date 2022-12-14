@@ -3,20 +3,10 @@ const data = require('../data/zoo_data');
 
 // // console.log(employees)
 
-const isManager = (id) => {
-  // console.log(id)
-  //   // retorna booleano
-  //   // caminho employees.menagers
-  //   // verifica se é gerente true or false usar some.
-  return employees
-    .some((gerente) =>
-    // console.log(gerente,gerente.managers)
-      gerente.managers.includes(id));
-  // .filter((gerente) =>
-  // console.log(gerente))
-  //     .some((element) => element[0] === id || element[1] === id)
-  //   // .some((element, index) => element[index] === id)
-};
+const isManager = (id) => employees
+  .some((gerente) =>
+    gerente.managers.includes(id));
+
 const getRelatedEmployees = (managerId) => {
   if (isManager(managerId) === false) {
     throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
@@ -24,7 +14,8 @@ const getRelatedEmployees = (managerId) => {
   const nomeCompleto = [];
   employees.forEach((gerente) => {
     if (gerente.managers.includes(managerId)) {
-      nomeCompleto.push(gerente.firstName + ' ' + gerente.lastName);
+      // nomeCompleto.push(gerente.firstName + ' ' + gerente.lastName);
+      nomeCompleto.push(`${gerente.firstName} ${gerente.lastName}`);
     }
   });
   return nomeCompleto;
