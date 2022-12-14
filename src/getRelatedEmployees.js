@@ -2,7 +2,7 @@
 const data = require('../data/zoo_data');
 
 // // console.log(employees)
-// const isManager = (id) => {
+const isManager = (id) => {
 //   // retorna booleano
 //   // caminho employees.menagers
 //   // verifica se é gerente usar some.
@@ -13,11 +13,11 @@ const data = require('../data/zoo_data');
 //     .some((element) => element[0] === id || element[1] === id)
 //   // .some((element, index) => element[index] === id)
 
-// };
+};
 
-// const getRelatedEmployees = (managerId) => {
+const getRelatedEmployees = (managerId) => {
 
-// };
+};
 // // isManager(olaId)
 // console.log(isManager('fdb2543b-5662-46a7-badc-93d960fdc0a8'))
 // console.log(isManager('0e7b460e-acf4-4e17-bcb3-ee472265db83'))
