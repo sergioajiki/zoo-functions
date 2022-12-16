@@ -4,11 +4,22 @@ const { hours } = require('../data/zoo_data');
 
 function diaDisponivel(scheduleTarget) {
   return species.find((specie) => specie.name === scheduleTarget).availability;
-  }
+}
 
 function verificaDia(scheduleTarget) {
-  
-}  
+  const exhibition = []
+  const result = {}
+  const agendaDoDia = species.forEach((animal) => {
+    if (animal.availability.includes(scheduleTarget)) {
+      exhibition.push(animal.name)
+      result[scheduleTarget] = {}
+      result[scheduleTarget].exhibition = exhibition
+      result[scheduleTarget].officeHour = `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`
+      result[scheduleTarget].officeHour = `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`
+    }
+  });
+
+}
 
 const getSchedule = (scheduleTarget) => {
   // console.log(scheduleTarget)
@@ -23,28 +34,26 @@ const getSchedule = (scheduleTarget) => {
   // if(scheduleTarget === qualquerCoisa)
   // retorna toda a agenda
 
-  if (scheduleTarget === 'lions'){  
-  
-  return diaDisponivel(scheduleTarget)  
+  if (scheduleTarget === 'lions') {
+    return diaDisponivel(scheduleTarget)
   }
-  console.log(diaDisponivel)(scheduleTarget);
-//   const exhibition = []
-//   const result = {}
-//   const agendaDoDia = species.forEach((animal) => {
-//     if (animal.availability.includes(scheduleTarget)) {
-//       exhibition.push(animal.name)
-//       result[scheduleTarget] = {}
-//       result[scheduleTarget].exhibition = exhibition
-//       result[scheduleTarget].officeHour = `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`
-//       result[scheduleTarget].officeHour = `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`
-//     }
-//   });
-// console.log(result)
-// return result
-  // return dias
-  
+  //   const exhibition = []
+  //   const result = {}
+  //   const agendaDoDia = species.forEach((animal) => {
+  //     if (animal.availability.includes(scheduleTarget)) {
+  //       exhibition.push(animal.name)
+  //       result[scheduleTarget] = {}
+  //       result[scheduleTarget].exhibition = exhibition
+  //       result[scheduleTarget].officeHour = `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`
+  //       result[scheduleTarget].officeHour = `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`
+  //     }
+  //   });
+  // console.log(result)
   // return result
-  
+  // return dias
+
+  // return result
+
   // console.log(exhibition);
   // console.log(result)
 }
