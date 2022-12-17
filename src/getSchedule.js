@@ -18,6 +18,24 @@ function horaFuncionamento(scheduleTarget) {
     }
   }
 }
+// Agenda da Semana
+const semana = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+function agendaDaSemana() {
+  for (let dia of semana) {
+    const exhibitionList = [];
+    let result = {};
+    species.forEach((animal) => {
+      if (animal.availability.includes(dia)) {
+        exhibitionList.push(animal.name);
+        result[dia] = {};
+        result[dia].officeHour = horaFuncionamento(dia);
+        result[dia].exhibition = exhibitionList;
+      }
+    })
+    return result
+  }
+
+}
 
 function verificaDia(scheduleTarget) {
   const exhibitionList = [];
@@ -26,19 +44,21 @@ function verificaDia(scheduleTarget) {
     if (animal.availability.includes(scheduleTarget)) {
       exhibitionList.push(animal.name);
       result[scheduleTarget] = {};
-      result[scheduleTarget].exhibition = exhibitionList;
       result[scheduleTarget].officeHour = horaFuncionamento(scheduleTarget);
+      result[scheduleTarget].exhibition = exhibitionList;
     } else if (scheduleTarget === 'Monday') {
       result = { Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } };
+    } else {
+      agendaDaSemana()
     }
   });
   return result;
 }
-
+// 'Tuesday': {
+//   'officeHour': 'Open from 8am until 6pm',
+//   'exhibition': [ 'lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes' ],
+// },
 const getSchedule = (scheduleTarget) => {
-  // console.log(scheduleTarget)
-  // retorna um array com o dias da semana no formato[ 'Tuesday', 'Wednesday', 'Sunday', 'Saturday' ]
-  // caminho species.availability
   // parametros verificados nome:animal, diaSemana, '',qualquercoisa
   // if(scheduleTarget === undefined)
   // retorna toda a agenda
@@ -51,39 +71,15 @@ const getSchedule = (scheduleTarget) => {
   }
   // return horaFuncionamento(scheduleTarget)
   return verificaDia(scheduleTarget);
+  // return agendaDaSemana();
+
 };
-//   const exhibition = []
-//   const result = {}
-//   const agendaDoDia = species.forEach((animal) => {
-//     if (animal.availability.includes(scheduleTarget)) {
-//       exhibition.push(animal.name)
-//       result[scheduleTarget] = {}
-//       result[scheduleTarget].exhibition = exhibition
-//       result[scheduleTarget].officeHour = `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`
-//       result[scheduleTarget].officeHour = `Open from ${hours.Tuesday.open}am until ${hours.Tuesday.close}pm`
-//     }
-//   });
-// console.log(result)
-// return result
-// return dias
 
-// return result
-
-// console.log(exhibition);
-// console.log(result)
-// getSchedule('Tuesday')
-// console.log(getSchedule('lions'))
-console.log(getSchedule('Monday'));
-console.log(getSchedule('Tuesday'));
-console.log(getSchedule('Thursday'));
+// console.log(getSchedule('Monday'));
+// console.log(getSchedule('Tuesday'));
+// console.log(getSchedule('Thursday'));
 console.log(getSchedule('lions'));
 console.log(getSchedule('penguins'));
-
-// {
-//   'Tuesday': {
-//     'officeHour': 'Open from 8am until 6pm',
-//       'exhibition': ['lions', 'tigers', 'bears', 'penguins', 'elephants', 'giraffes'],
-// },
-// }
+// console.log(getSchedule('eeee'));
 
 module.exports = getSchedule;
