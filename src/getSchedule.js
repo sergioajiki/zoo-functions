@@ -9,16 +9,12 @@ const horarios = Object.entries(hours);
 function horaFuncionamento(scheduleTarget) {
   let horarioFunc = '';
   horarios.forEach((key) => {
-    // console.log(key[0])
-    // console.log(key[1])
-    // console.log(key[1].open)
     if (key[0] === scheduleTarget) {
       horarioFunc = `Open from ${key[1].open}am until ${key[1].close}pm`;
     }
   });
   return horarioFunc;
 }
-// Agenda da Semana
 
 function agendaDoDia(diaSemana) {
   const exhibitionList = [];
@@ -30,27 +26,22 @@ function agendaDoDia(diaSemana) {
       result[diaSemana].officeHour = horaFuncionamento(diaSemana);
       result[diaSemana].exhibition = exhibitionList;
     } else if (diaSemana === 'Monday') {
-      // let result = {};
       result = { Monday: { officeHour: 'CLOSED', exhibition: 'The zoo will be closed!' } };
-      // return result
     }
   });
-  // console.log(result)
   return result;
 }
+
 const semana = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday'];
 function agendaDaSemana() {
   const agendaSemana = {};
-  for (const dia of semana) {
+  semana.forEach((dia) => {
     Object.assign(agendaSemana, agendaDoDia(dia));
-    // console.log(result)
-  }
-  //  console.log(agendaSemana);
+  });
   return agendaSemana;
 }
 
 function verificaDia(scheduleTarget) {
-  // const exhibitionList = [];
   let resposta = {};
   species.forEach((animal) => {
     if (animal.availability.includes(scheduleTarget)) {
@@ -70,14 +61,11 @@ const getSchedule = (scheduleTarget) => {
   if (species.some((specie) => specie.name === scheduleTarget)) {
     return animalDisponivelNoDia(scheduleTarget);
   }
-  // return horaFuncionamento(scheduleTarget)
   return verificaDia(scheduleTarget);
-  // return agendaDoDia(scheduleTarget);
-  // return agendaDaSemana();
 };
 
 // console.log(getSchedule('Monday'));
-console.log(getSchedule('Tuesday'));
+// console.log(getSchedule('Tuesday'));
 // console.log(getSchedule('Thursday'));
 // console.log(getSchedule('lions'));
 // console.log(getSchedule('penguins'));
