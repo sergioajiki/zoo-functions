@@ -5,18 +5,18 @@ const { hours } = require('../data/zoo_data');
 function animalDisponivelNoDia(scheduleTarget) {
   return species.find((specie) => specie.name === scheduleTarget).availability;
 }
-
+const horarios = Object.entries(hours);
 function horaFuncionamento(scheduleTarget) {
-  for (const key in hours) {
-    if (key === scheduleTarget) {
-      return `Open from ${hours[key].open}am until ${hours[key].close}pm`;
-      //   console.log(key)
-      //   console.log(hours[key])
-      //   console.log(hours[key].open)
-      //   console.log(Object.values(hours[key]))
-      // }
+  let horarioFunc = '';
+  horarios.forEach((key) => {
+    // console.log(key[0])
+    // console.log(key[1])
+    // console.log(key[1].open)
+    if (key[0] === scheduleTarget) {
+      horarioFunc = `Open from ${key[1].open}am until ${key[1].close}pm`;
     }
-  }
+  });
+  return horarioFunc;
 }
 // Agenda da Semana
 
@@ -77,7 +77,7 @@ const getSchedule = (scheduleTarget) => {
 };
 
 // console.log(getSchedule('Monday'));
-// console.log(getSchedule('Tuesday'));
+console.log(getSchedule('Tuesday'));
 // console.log(getSchedule('Thursday'));
 // console.log(getSchedule('lions'));
 // console.log(getSchedule('penguins'));
