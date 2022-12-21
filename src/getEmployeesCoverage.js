@@ -22,6 +22,7 @@ function verificaFuncionario(parametro) {
 
 function idFuncionario(parametro) {
   // console.log(parametro)
+  // if(verificaFuncionario(parametro) === false) throw new Error('Informações Inválidas');
   let result = '';
   // console.log(employees);
   employees.find((employee) => {
@@ -114,9 +115,9 @@ const getEmployeesCoverage = (parametro) => {
   if (parametro === undefined) {
     return allFuncionarios();
   }
-  if (verificaFuncionario(parametro) === false) {
-    throw new Error('Informações Inválidas');
-  }
+  // console.log(idFuncionario(parametro))
+  if (verificaFuncionario(parametro) === false) throw new Error('Informações inválidas');
+
   return infoFuncionario(parametro);
   // console.log(verificaFuncionario(parametro))
   // return getAnimals(parametro)
@@ -124,7 +125,7 @@ const getEmployeesCoverage = (parametro) => {
   // return nomeCompleto(parametro)
   // return idFuncionario(parametro)
 };
-console.log(getEmployeesCoverage({ name: 'Sharonda' }));
+// console.log(getEmployeesCoverage({ name: 'Sharonda' }));
 // console.log(getEmployeesCoverage({ name: 'Spry' }));
 // console.log(getEmployeesCoverage({ id: 'c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1' }));
 
