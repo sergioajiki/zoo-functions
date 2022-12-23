@@ -16,16 +16,61 @@ const localizacao = {
   SE: localSE,
   SW: localSW,
 }
-console.log(localizacao)
 // nome dos animais
 
+const localNamesNE = species.filter((animal) => animal.location === 'NE')
+.map((element) => ({  [element.name]: element.residents.map((e) => e.name) }))
+const localNamesNW = species.filter((animal) => animal.location === 'NW')
+.map((element) => ({  [element.name]: element.residents.map((e) => e.name) }))
+const localNamesSE = species.filter((animal) => animal.location === 'SE')
+.map((element) => ({  [element.name]: element.residents.map((e) => e.name) }))
+const localNamesSW = species.filter((animal) => animal.location === 'SW')
+.map((element) => ({  [element.name]: element.residents.map((e) => e.name) }))
+
+const localizacaoComNome = {
+  NE: localNamesNE,
+  NW: localNamesNW,
+  SE: localNamesSE,
+  SW: localNamesSW,
+}
 
 
 
+
+// console.log(localNamesNE);
+// {
+//   NE:[{specie: [nomes dos animais]}  ]
+// }
+//  o retorno é um objeto 
+//  {
+//   NE: [
+//     { lions: ['Zena', 'Maxwell', 'Faustino', 'Dee'] },
+//     { giraffes: ['Gracia', 'Antone', 'Vicky', 'Clay', 'Arron', 'Bernard'] },
+//   ],
+//   NW: [
+//     { tigers: ['Shu', 'Esther'] },
+//     { bears: ['Hiram', 'Edwardo', 'Milan'] },
+//     { elephants: ['Ilana', 'Orval', 'Bea', 'Jefferson'] },
+//   ],
+//   SE: [
+//     { penguins: ['Joe', 'Tad', 'Keri', 'Nicholas'] },
+//     { otters: ['Neville', 'Lloyd', 'Mercedes', 'Margherita'] },
+//   ],
+//   SW: [
+//     { frogs: ['Cathey', 'Annice'] },
+//     { snakes: ['Paulette', 'Bill'] },
+//   ],
+// };
 
 const getAnimalMap = (options) => {
+  console.log(options)
   if (options === undefined) return localizacao;
-
+  if (options.includeNames === true) {
+    return localizacaoComNome
+   } else {
+    return localizacao
+   } 
+  
   // seu código aqui
   // caminho species.name species.location species.resident.name,sex
   // separar por local
@@ -34,5 +79,11 @@ const getAnimalMap = (options) => {
 
 };
 
-getAnimalMap()
+console.log(getAnimalMap());
+console.log(getAnimalMap({ includeNames: true }));
+// console.log(getAnimalMap({ includeNames: true, sorted: true }));
+// console.log(getAnimalMap({ includeNames: true, sex: 'female' }));
+// console.log(getAnimalMap({ includeNames: true, sex: 'female', sorted: true }));
+
+
 module.exports = getAnimalMap;
