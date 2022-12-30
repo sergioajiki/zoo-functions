@@ -16,16 +16,57 @@ const localizacao = {
   SE: localSE,
   SW: localSW,
 }
+// console.log(localizacao);
+const locais = ['NE', 'NW', 'SE', 'SW']
+// const locaisFiltrados = locais.filter((local) => {
+//   if (local === 'NE')
+//     return local
+// })
+// console.log(locaisFiltrados);
+const animaisPorLocal = () => {
+  const result = {}
+   locais.forEach((local) => {
+    const animaisPorLocal = species.filter((specie) => local === specie.location)
+    // .map((anim) => ({ [local]: anim.name } ))
+      .map((anim) => anim.name)
+     result[local] =  animaisPorLocal
+      // console.log(local,anim.name))
+      // ({ anim }))
+      // console.log
+      // console.log(result)
+      // console.log(teste)
+    
+  })
+return result
+
+}
+
+//  console.log(animaisPorLocal());
+
+
+
+
+
+// function animaisPorLocal() {
+// return locais.forEach((local) => {
+//   const listaAnimais = species.reduce((lista, itemAtual) => {},{})
+// }) 
+// }
+// console.log(animaisPorLocal())
+// construir o array de nomes
+// usar o sort dentro de um if para ordenar
+// usar o filter dentro de um if para separar por sex
+
 // nome dos animais
 
 const localNamesNE = species.filter((animal) => animal.location === 'NE')
-.map((element) => ({  [element.name]: element.residents.map((e) => e.name) }))
+  .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
 const localNamesNW = species.filter((animal) => animal.location === 'NW')
-.map((element) => ({  [element.name]: element.residents.map((e) => e.name) }))
+  .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
 const localNamesSE = species.filter((animal) => animal.location === 'SE')
-.map((element) => ({  [element.name]: element.residents.map((e) => e.name) }))
+  .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
 const localNamesSW = species.filter((animal) => animal.location === 'SW')
-.map((element) => ({  [element.name]: element.residents.map((e) => e.name) }))
+  .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
 
 const localizacaoComNome = {
   NE: localNamesNE,
@@ -63,14 +104,14 @@ const localizacaoComNome = {
 // };
 
 const getAnimalMap = (options) => {
-  console.log(options)
-  if (options === undefined) return localizacao;
-  if (options.includeNames === true) {
-    return localizacaoComNome
-   } else {
-    return localizacao
-   } 
-  
+  // console.log(options)
+  if (options === undefined) return animaisPorLocal();
+  // if (options.includeNames === true) {
+  // return localizacao
+  //  } else {
+    return animaisPorLocal()
+  //  } 
+
   // seu código aqui
   // caminho species.name species.location species.resident.name,sex
   // separar por local
@@ -80,7 +121,7 @@ const getAnimalMap = (options) => {
 };
 
 console.log(getAnimalMap());
-console.log(getAnimalMap({ includeNames: true }));
+// console.log(getAnimalMap({ includeNames: true }));
 // console.log(getAnimalMap({ includeNames: true, sorted: true }));
 // console.log(getAnimalMap({ includeNames: true, sex: 'female' }));
 // console.log(getAnimalMap({ includeNames: true, sex: 'female', sorted: true }));
