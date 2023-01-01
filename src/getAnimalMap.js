@@ -2,20 +2,20 @@ const data = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
 // localização dos animais
-const localNE = species.filter((animal) => animal.location === 'NE').map((ani) => ani.name)
-const localNW = species.filter((animal) => animal.location === 'NW').map((ani) => ani.name)
-const localSE = species.filter((animal) => animal.location === 'SE').map((ani) => ani.name)
-const localSW = species.filter((animal) => animal.location === 'SW').map((ani) => ani.name)
+// const localNE = species.filter((animal) => animal.location === 'NE').map((ani) => ani.name)
+// const localNW = species.filter((animal) => animal.location === 'NW').map((ani) => ani.name)
+// const localSE = species.filter((animal) => animal.location === 'SE').map((ani) => ani.name)
+// const localSW = species.filter((animal) => animal.location === 'SW').map((ani) => ani.name)
 // console.log(localNE)
 // console.log(localNW)
 // console.log(localSE)
 // console.log(localSW)
-const localizacao = {
-  NE: localNE,
-  NW: localNW,
-  SE: localSE,
-  SW: localSW,
-}
+// const localizacao = {
+//   NE: localNE,
+//   NW: localNW,
+//   SE: localSE,
+//   SW: localSW,
+// }
 // console.log(localizacao);
 const locais = ['NE', 'NW', 'SE', 'SW']
 // const locaisFiltrados = locais.filter((local) => {
@@ -25,28 +25,21 @@ const locais = ['NE', 'NW', 'SE', 'SW']
 // console.log(locaisFiltrados);
 const animaisPorLocal = () => {
   const result = {}
-   locais.forEach((local) => {
+  locais.forEach((local) => {
     const animaisPorLocal = species.filter((specie) => local === specie.location)
-    // .map((anim) => ({ [local]: anim.name } ))
+      // .map((anim) => ({ [local]: anim.name } ))
       .map((anim) => anim.name)
-     result[local] =  animaisPorLocal
-      // console.log(local,anim.name))
-      // ({ anim }))
-      // console.log
-      // console.log(result)
-      // console.log(teste)
-    
+    result[local] = animaisPorLocal
+    // console.log(local,anim.name))
+    // ({ anim }))
+    // console.log
+    // console.log(result)
+    // console.log(teste)
   })
-return result
+  return result
 
 }
-
 //  console.log(animaisPorLocal());
-
-
-
-
-
 // function animaisPorLocal() {
 // return locais.forEach((local) => {
 //   const listaAnimais = species.reduce((lista, itemAtual) => {},{})
@@ -109,7 +102,7 @@ const getAnimalMap = (options) => {
   // if (options.includeNames === true) {
   // return localizacao
   //  } else {
-    return animaisPorLocal()
+  // return animaisPorLocal()
   //  } 
 
   // seu código aqui
