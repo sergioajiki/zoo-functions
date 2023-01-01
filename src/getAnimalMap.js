@@ -1,73 +1,84 @@
 const data = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
-// localização dos animais
-// const localNE = species.filter((animal) => animal.location === 'NE').map((ani) => ani.name)
-// const localNW = species.filter((animal) => animal.location === 'NW').map((ani) => ani.name)
-// const localSE = species.filter((animal) => animal.location === 'SE').map((ani) => ani.name)
-// const localSW = species.filter((animal) => animal.location === 'SW').map((ani) => ani.name)
-// console.log(localNE)
-// console.log(localNW)
-// console.log(localSE)
-// console.log(localSW)
-// const localizacao = {
-//   NE: localNE,
-//   NW: localNW,
-//   SE: localSE,
-//   SW: localSW,
+// const locais = ['NE', 'NW', 'SE', 'SW']
+// const animaisPorLocal = () => {
+//   const result = {}
+//   locais.forEach((local) => {
+//     const animaisPorLocal = species.filter((specie) => local === specie.location)
+//       // .map((anim) => ({ [local]: anim.name } ))
+//       .map((anim) => anim.name)
+//     result[local] = animaisPorLocal
+//     // console.log(local,anim.name))
+//     // ({ anim }))
+//     // console.log
+//     // console.log(result)
+//     // console.log(teste)
+//   })
+//   return result
 // }
-// console.log(localizacao);
-const locais = ['NE', 'NW', 'SE', 'SW']
-// const locaisFiltrados = locais.filter((local) => {
-//   if (local === 'NE')
-//     return local
-// })
-// console.log(locaisFiltrados);
-const animaisPorLocal = () => {
-  const result = {}
-  locais.forEach((local) => {
-    const animaisPorLocal = species.filter((specie) => local === specie.location)
-      // .map((anim) => ({ [local]: anim.name } ))
-      .map((anim) => anim.name)
-    result[local] = animaisPorLocal
-    // console.log(local,anim.name))
-    // ({ anim }))
-    // console.log
-    // console.log(result)
-    // console.log(teste)
-  })
-  return result
 
+const animalPorLocal = species.reduce(function (acumulador, animal) {
+  if (!acumulador[animal.location]) {
+    acumulador[animal.location] = [];
+  }
+  acumulador[animal.location].push(animal.name);
+  return acumulador
+}, {})
+
+// const nomesDosAnimais = species.map((animal) => ({ [animal.name]: animal.residents.map((anim) => anim.name) }))
+// console.log(nomesDosAnimais);
+
+// console.log(options);
+function allAnimalPorLocal(options) {
+  console.log(options);
+  const result = species.reduce(function (acumulador, animal) {
+   let animalNomes = animal.residents.map((anim) => anim.name)
+    if (options.sorted === true) animalNomes = animalNomes.sort()
+    if (!acumulador[animal.location]) {
+      acumulador[animal.location] = [];
+    }
+    acumulador[animal.location].push({ [animal.name]: animalNomes });
+    return acumulador
+
+  }, {})
+  return result
 }
-//  console.log(animaisPorLocal());
-// function animaisPorLocal() {
-// return locais.forEach((local) => {
-//   const listaAnimais = species.reduce((lista, itemAtual) => {},{})
-// }) 
-// }
-// console.log(animaisPorLocal())
+// console.log(allAnimalPorLocal);
+
+// const allAnimalPorLocalSex = species.reduce(function (acumulador, animal) {
+//   if (!acumulador[animal.location]) {
+//     acumulador[animal.location] = [];
+//   }
+//   acumulador[animal.location].push({ [animal.name]: animal.residents.map((anim) => anim.name) });
+//   return acumulador
+// }, {})
+
+
+
+
 // construir o array de nomes
 // usar o sort dentro de um if para ordenar
 // usar o filter dentro de um if para separar por sex
 
 // nome dos animais
 
-const localNamesNE = species.filter((animal) => animal.location === 'NE')
-  .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
-const localNamesNW = species.filter((animal) => animal.location === 'NW')
-  .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
-const localNamesSE = species.filter((animal) => animal.location === 'SE')
-  .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
-const localNamesSW = species.filter((animal) => animal.location === 'SW')
-  .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
+// const localNamesNE = species.filter((animal) => animal.location === 'NE')
+//   .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
+// const localNamesNW = species.filter((animal) => animal.location === 'NW')
+//   .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
+// const localNamesSE = species.filter((animal) => animal.location === 'SE')
+//   .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
+// const localNamesSW = species.filter((animal) => animal.location === 'SW')
+//   .map((element) => ({ [element.name]: element.residents.map((e) => e.name) }))
 
-const localizacaoComNome = {
-  NE: localNamesNE,
-  NW: localNamesNW,
-  SE: localNamesSE,
-  SW: localNamesSW,
-}
-
+// const localizacaoComNome = {
+//   NE: localNamesNE,
+//   NW: localNamesNW,
+//   SE: localNamesSE,
+//   SW: localNamesSW,
+// }
+// console.log(localizacaoComNome);
 
 
 
@@ -97,10 +108,11 @@ const localizacaoComNome = {
 // };
 
 const getAnimalMap = (options) => {
+
   // console.log(options)
-  if (options === undefined) return animaisPorLocal();
-  // if (options.includeNames === true) {
-  // return localizacao
+  if (options === undefined) return animalPorLocal;
+  if (!options.includeNames) return animalPorLocal;
+  if (options.includeNames === true) return allAnimalPorLocal(options);
   //  } else {
   // return animaisPorLocal()
   //  } 
@@ -113,9 +125,10 @@ const getAnimalMap = (options) => {
 
 };
 
-console.log(getAnimalMap());
-// console.log(getAnimalMap({ includeNames: true }));
-// console.log(getAnimalMap({ includeNames: true, sorted: true }));
+
+// console.log(getAnimalMap());
+console.log(getAnimalMap({ includeNames: true }));
+console.log(getAnimalMap({ includeNames: true, sorted: true }));
 // console.log(getAnimalMap({ includeNames: true, sex: 'female' }));
 // console.log(getAnimalMap({ includeNames: true, sex: 'female', sorted: true }));
 
