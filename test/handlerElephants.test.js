@@ -31,3 +31,8 @@ it('Passando por argumento um objeto vazio ({}) deve retornar a string "Parâmet
   const expected = 'Parâmetro inválido, é necessário uma string';
   expect(actual).toBe(expected);
 });
+it('Passada uma string que não contempla uma funcionalidade deve retornar null', () => {
+  const actual = handlerElephants('teste');
+  const expected = null;
+  expect(actual).toBe(expected);
+});
