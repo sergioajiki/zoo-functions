@@ -10,35 +10,30 @@ const animalPorLocal = species.reduce(function (acumulador, animal) {
 }, {});
 
 function allAnimalPorLocal(options) {
-  const animalBySex = []
+  let animalNomes = ''
   const result = species.reduce(function (acumulador, animal) {
-    
-    let animalNomes = animal.residents.map((anim) => anim.name);
-    console.log(animalNomes);
-    let animalSex = animal.residents.filter((anim) => {
+    if (!options.sex) {
+    animalNomes = animal.residents.map((anim) => anim.name);
+    } else {
+    animalNomes = animal.residents.filter((anim) => {
       if (anim.sex === options.sex) {
-        //  console.log(anim.name)
-        // return anim.name
         return anim.name
       }
-    }).map((nomeAnimal) => nomeAnimal.name);
-    // console.log(animalBySex)
-    console.log(animalSex);
-   
+    }).map((nomeAnimal) => nomeAnimal.name)
+  }
     if (options.sorted === true) animalNomes = animalNomes.sort();
     if (!acumulador[animal.location]) {
       acumulador[animal.location] = [];
     }
-     if (options.sex) {
-      acumulador[animal.location].push({ [animal.name]: animalSex });
-      return acumulador;
-    }
+    // if (options.sex) {
+    //   acumulador[animal.location].push({ [animal.name]: animalSex });
+    //   return acumulador;
+    // }
     acumulador[animal.location].push({ [animal.name]: animalNomes });
     return acumulador;
   }, {});
   return result;
 }
-
 
 const getAnimalMap = (options) => {
   // console.log(options)
@@ -50,7 +45,7 @@ const getAnimalMap = (options) => {
 // console.log(getAnimalMap());
 // console.log(getAnimalMap({ includeNames: true }));
 // console.log(getAnimalMap({ includeNames: true, sorted: true }));
-console.log(getAnimalMap({ includeNames: true, sex: 'female' }));
+// console.log(getAnimalMap({ includeNames: true, sex: 'female' }));
 // console.log(getAnimalMap({ includeNames: true, sex: 'female', sorted: true }));
 
 module.exports = getAnimalMap;
