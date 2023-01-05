@@ -36,3 +36,9 @@ it('Passada uma string que não contempla uma funcionalidade deve retornar null'
   const expected = null;
   expect(actual).toBe(expected);
 });
+it('Para o argumento availability deve retornar um array de dias da semana que não contém Monday', () => {
+  const actual = handlerElephants('availability');
+  const expected = [ 'Friday', 'Saturday', 'Sunday', 'Tuesday' ];
+  expect(actual).toEqual(expected);
+});
+

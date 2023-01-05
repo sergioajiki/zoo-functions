@@ -35,7 +35,7 @@ const handlerElephants = (param) => {
 
 module.exports = handlerElephants;
 
-// console.log(handlerElephants('teste'));
+// console.log(handlerElephants('availability'));
 // console.log(handlerElephants('count'))
 // console.log(handlerElephants())
 // console.log(handlerElephants(12))
