@@ -35,6 +35,7 @@ const handlerElephants = (param) => {
 
 module.exports = handlerElephants;
 
+console.log(handlerElephants({}));
 // console.log(handlerElephants('count'))
 // console.log(handlerElephants())
 // console.log(handlerElephants(12))

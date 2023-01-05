@@ -13,17 +13,16 @@ const animalPorLocal = species.reduce((acc, animal) => {
 function allAnimalPorLocal(options) {
   const result = species.reduce((acc, animal) => {
     const acumulador = acc;
-    let animalNomes = animal.residents.map((anim) => anim.name);
     const animalNomeBySex = animal.residents.filter((anim) => {
       if (anim.sex === options.sex) {
         return anim.name;
       }
+      return false;
     }).map((nomeAnimal) => nomeAnimal.name);
+    let animalNomes = animal.residents.map((anim) => anim.name);
     if (options.sex) animalNomes = animalNomeBySex;
     if (options.sorted === true) animalNomes = animalNomes.sort();
-    if (!acumulador[animal.location]) {
-      acumulador[animal.location] = [];
-    }
+    if (!acumulador[animal.location]) acumulador[animal.location] = [];
     acumulador[animal.location].push({ [animal.name]: animalNomes });
     return acumulador;
   }, {});

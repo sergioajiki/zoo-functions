@@ -26,3 +26,8 @@ it('Para o argumento averageAge retorna um número próximo a 10.5', () => {
   const expected = 10.5;
   expect(actual).toBe(expected);
 });
+it('Passando por argumento um objeto vazio ({}) deve retornar a string "Parâmetro inválido, é necessário uma string"', () => {
+  const actual = handlerElephants({});
+  const expected = 'Parâmetro inválido, é necessário uma string';
+  expect(actual).toBe(expected);
+});
