@@ -1,7 +1,8 @@
 const data = require('../data/zoo_data');
 const { species } = require('../data/zoo_data');
 
-const animalPorLocal = species.reduce(function (acumulador, animal) {
+const animalPorLocal = species.reduce((acc, animal) => {
+  const acumulador = acc;
   if (!acumulador[animal.location]) {
     acumulador[animal.location] = [];
   }
@@ -10,25 +11,19 @@ const animalPorLocal = species.reduce(function (acumulador, animal) {
 }, {});
 
 function allAnimalPorLocal(options) {
-  let animalNomes = ''
-  const result = species.reduce(function (acumulador, animal) {
-    if (!options.sex) {
-    animalNomes = animal.residents.map((anim) => anim.name);
-    } else {
-    animalNomes = animal.residents.filter((anim) => {
+  const result = species.reduce((acc, animal) => {
+    const acumulador = acc;
+    let animalNomes = animal.residents.map((anim) => anim.name);
+    const animalNomeBySex = animal.residents.filter((anim) => {
       if (anim.sex === options.sex) {
-        return anim.name
+        return anim.name;
       }
-    }).map((nomeAnimal) => nomeAnimal.name)
-  }
+    }).map((nomeAnimal) => nomeAnimal.name);
+    if (options.sex) animalNomes = animalNomeBySex;
     if (options.sorted === true) animalNomes = animalNomes.sort();
     if (!acumulador[animal.location]) {
       acumulador[animal.location] = [];
     }
-    // if (options.sex) {
-    //   acumulador[animal.location].push({ [animal.name]: animalSex });
-    //   return acumulador;
-    // }
     acumulador[animal.location].push({ [animal.name]: animalNomes });
     return acumulador;
   }, {});
