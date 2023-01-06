@@ -16,12 +16,11 @@ describe('Testes da função getOpeningHours', () => {
     };
     expect(atual).toEqual(expected);
   });
-
-  it('passado o dia Tuesday e o horario 09:00-AM deverá retornar The zoo is open ', () => {
+  it('verifica se está aberto', () => {
     expect(getOpeningHours('Tuesday', '09:00-AM')).toBe(zooOpen);
     expect(getOpeningHours('Friday', '12:30-PM')).toBe(zooOpen);
   });
-  it('passado o dia Wednesday e 09:00-PM deverá retornar The zoo is closed', () => {
+  it('verifica se está fechado', () => {
     expect(getOpeningHours('Wednesday', '09:00-PM')).toBe(zooClosed);
     expect(getOpeningHours('Monday', '11:39-AM')).toBe(zooClosed);
   });
